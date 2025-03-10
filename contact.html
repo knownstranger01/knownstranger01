@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Sunil Paudel</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-profile">
+                <a href="index.html">
+                    <img src="images/my pic.jpg" alt="Sunil Paudel">
+                </a>
+                <div class="logo">
+                    <h1>Welcome to my Official Website</h1>
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="services.html">Services</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+            <div class="theme-switch">
+                <i class="fas fa-moon"></i>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contact Details</h3>
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+977 98XXXXXXXX</p>
+                    <a href="tel:+97798XXXXXXXX" class="contact-btn">
+                        <i class="fas fa-phone"></i> Call
+                    </a>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>sunil.paudel13@gmail.com</p>
+                    <a href="mailto:sunil.paudel13@gmail.com" class="contact-btn">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-location-dot"></i>
+                    <p>Chabahil, Kathmandu, Nepal</p>
+                    <a href="https://www.google.com/maps/place/Chabahil,+Kathmandu+44600/@27.7157250,85.3442194,17z/" target="_blank" class="map-btn">
+                        <i class="fas fa-map-marked-alt"></i> Explore Map
+                    </a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send Message</h3>
+                <form action="https://formsubmit.co/sunil.paudel13@gmail.com" method="POST">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    
+                    <input type="hidden" name="_next" value="https://your-website-url.com/thank-you.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="New Contact Message!">
+                    
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/knownstranger01" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/knownstranger01" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@knownstranger01" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/sunilpaudel" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; 2025 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 
