@@ -42,6 +42,33 @@ const portfolioItems = [
         videoId: 'OxF8LbGwFJg',
         youtubeUrl: 'https://www.youtube.com/watch?v=OxF8LbGwFJg&ab_channel=knownstranger01',
         description: 'रफ्तार रफ्तार'
+    },
+    {
+        id: 6,
+        category: 'video',
+        title: 'ए चरी',
+        type: 'youtube',
+        videoId: 'fo1ctoUJU4k',
+        youtubeUrl: 'https://youtu.be/fo1ctoUJU4k',
+        description: 'ए चरी'
+    },
+    {
+        id: 7,
+        category: 'video',
+        title: 'मायामा',
+        type: 'youtube',
+        videoId: 'cR-lMoXgRSg',
+        youtubeUrl: 'https://youtu.be/cR-lMoXgRSg',
+        description: 'मायामा'
+    },
+    {
+        id: 8,
+        category: 'video',
+        title: 'सकस',
+        type: 'youtube',
+        videoId: 'IgqC5ZvAsyA',
+        youtubeUrl: 'https://youtu.be/IgqC5ZvAsyA',
+        description: 'सकस - Short Nepali Film'
     }
 ];
 
@@ -350,4 +377,59 @@ style.textContent = `
         }
     }
 `;
-document.head.appendChild(style); 
+document.head.appendChild(style);
+
+// Modal functions
+function openModal(modalId) {
+    document.getElementById(modalId).style.display = 'flex';
+}
+
+function closeModal() {
+    document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+}
+
+// Contact Form Submission
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            openModal('modalContact');
+            form.reset();
+        } else {
+            alert('Message sending failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        alert('An error occurred. Please try again.');
+    });
+});
+
+// Inquiry Form Submission
+document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            openModal('modalInquiry');
+            form.reset();
+        } else {
+            alert('Inquiry sending failed. Please try again.');
+        }
+    })
+    .catch(error => {
+        alert('An error occurred. Please try again.');
+    });
+}); 

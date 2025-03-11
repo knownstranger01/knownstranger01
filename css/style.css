@@ -8,6 +8,8 @@
     --body-bg: #ffffff;
     --card-bg: #ffffff;
     --footer-bg: #ffffff;
+    --gradient-bg: linear-gradient(135deg, #3498db, #e74c3c);
+    --font-primary: 'Poppins', sans-serif;
 }
 
 [data-theme="dark"] {
@@ -17,13 +19,14 @@
     --body-bg: #1a1a1a;
     --card-bg: #2c3e50;
     --footer-bg: #1a1a1a;
+    --gradient-bg: linear-gradient(135deg, #2c3e50, #1a1a1a);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: var(--font-primary);
 }
 
 html {
@@ -35,7 +38,7 @@ body {
     color: var(--text-color);
     overflow-y: auto;
     height: auto;
-    background: var(--body-bg);
+    background: var(--gradient-bg);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -83,7 +86,11 @@ header {
 
 .nav-profile img:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    display: block;
 }
 
 .logo h1 {
@@ -99,11 +106,12 @@ header {
     margin-left: 2rem;
     font-weight: 500;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-links a:hover, .nav-links a.active {
     color: var(--secondary-color);
+    transform: scale(1.1);
 }
 
 .hamburger {
@@ -141,34 +149,17 @@ header {
 }
 
 .hero-text h1 {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 1.5rem;
     position: relative;
-    background: linear-gradient(
-        to right,
-        var(--secondary-color),
-        var(--accent-color),
-        #2ecc71,
-        var(--secondary-color)
-    );
-    background-size: 300% 300%;
+    background: linear-gradient(45deg, #2c3e50, #3498db);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: gradient 8s ease infinite;
-    text-shadow: none;
-}
-
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
 }
 
 .hero-text h1::after {
@@ -210,7 +201,8 @@ header {
 }
 
 .profile-image img:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
 }
 
 .profile-name {
@@ -256,7 +248,7 @@ header {
     display: flex;
     gap: 1rem;
     animation: fadeInUp 1s ease 0.4s;
-    opacity: 0;
+    opacity: 1;
     animation-fill-mode: forwards;
 }
 
@@ -268,41 +260,42 @@ header {
     border-radius: 5px;
     transition: all 0.3s ease;
     font-weight: 500;
-}
-
-.cta-button:first-child {
     background: var(--secondary-color);
 }
 
-.cta-button:first-child:hover {
+.cta-button:hover {
     background: var(--primary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button.contact {
-    background: var(--secondary-color);
-    border: none;
-    color: white;
+    background: var(--primary-color);
 }
 
 .cta-button.contact:hover {
-    background: var(--primary-color);
-    color: white;
+    background: var(--secondary-color);
 }
 
 .cta-button.services {
-    background: var(--secondary-color);
-    border: none;
-    color: white;
+    background: var(--accent-color);
 }
 
 .cta-button.services:hover {
     background: var(--primary-color);
-    color: white;
 }
 
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+@media (max-width: 768px) {
+    .cta-buttons {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .cta-button {
+        padding: 1.2rem 2rem;
+        font-size: 1.1rem;
+    }
 }
 
 /* Portfolio Section */
@@ -699,7 +692,27 @@ header {
 
 [data-theme="dark"] .contact-form input,
 [data-theme="dark"] .contact-form textarea {
-    border-color: #444;
+    background: rgba(44, 62, 80, 0.8);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+}
+
+[data-theme="dark"] .contact-form input::placeholder,
+[data-theme="dark"] .contact-form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .contact-form label {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .submit-btn {
+    background: var(--accent-color);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .submit-btn:hover {
+    background: var(--primary-color);
 }
 
 /* Footer */
@@ -763,6 +776,17 @@ footer {
 
 @keyframes blink {
     50% { background: transparent }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Design */
@@ -970,47 +994,20 @@ footer {
 
 .theme-switch {
     cursor: pointer;
-    padding: 0.5rem;
-    margin-left: 1rem;
-    border-radius: 50%;
-    background: var(--card-bg);
-    color: var(--text-color);
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-}
-
-.theme-switch:hover {
-    background: var(--secondary-color);
-    color: white;
-    transform: scale(1.1);
-}
-
-[data-theme="dark"] .theme-switch i {
-    transform: rotate(180deg);
+    padding: 5px;
 }
 
 .theme-switch i {
-    font-size: 1rem;
-    transition: transform 0.3s ease;
+    font-size: 1.5rem;
+    color: var(--text-color);
 }
 
-.hamburger {
-    display: none;
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --secondary-color: #2c3e50;
+    --accent-color: #3498db;
 }
-
-@media (max-width: 768px) {
-    .theme-switch {
-        margin-left: 1rem;
-    }
-    
-    .theme-switch-icon {
-        font-size: 1rem;
-    }
-} 
 
 /* Services Section */
 #services {
@@ -1041,16 +1038,14 @@ footer {
 }
 
 .service-box {
-    background: var(--card-bg);
+    background: #ffffff; /* White background */
+    color: #333333; /* Dark text for contrast */
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    color: var(--text-color);
 }
 
 .service-box::before {
@@ -1115,22 +1110,24 @@ footer {
 }
 
 .inquiry-btn {
-    display: inline-block;
-    background: var(--secondary-color);
-    color: white;
-    padding: 0.8rem 1.5rem;
+    background: linear-gradient(135deg, #6dd5ed, #2193b0); /* Attractive gradient background */
+    color: white; /* White text for the button */
+    padding: 0.8rem 1.5rem; /* Adjust padding for a larger button */
     border-radius: 5px;
     text-decoration: none;
     font-weight: 500;
     margin-top: 1.5rem;
     text-align: center;
     transition: all 0.3s ease;
+    width: 100%; /* Full width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
 }
 
 .inquiry-btn:hover {
-    background: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #2193b0, #6dd5ed); /* Reverse gradient on hover */
+    color: #ffffff; /* Keep text color white on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
 }
 
 @media (max-width: 768px) {
@@ -1233,10 +1230,10 @@ footer {
 }
 
 .skill-tags span {
-    background: var(--card-bg);
-    color: var(--text-color);
+    background: var(--secondary-color);
+    color: white;
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: 5px;
     font-size: 0.85rem;
     transition: all 0.3s ease;
     text-align: center;
@@ -1245,12 +1242,14 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--secondary-color);
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .skill-tags span:hover {
     transform: translateY(-2px);
     background: var(--primary-color);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 1024px) {
@@ -1315,4 +1314,162 @@ footer {
         width: 100%;
         justify-content: center;
     }
+} 
+
+/* Loading Spinner */
+.loading-spinner {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-spinner.active {
+    display: flex;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--secondary-color);
+    border-top: 5px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.modal-content button {
+    padding: 0.6rem 1.5rem;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.modal-content button:hover {
+    background: var(--primary-color);
+} 
+
+[data-theme="dark"] .service-box {
+    color: #ffffff;
+    background: rgba(44, 62, 80, 0.8);
+}
+
+[data-theme="dark"] .service-box h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .service-box ul li {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .about-description p, [data-theme="dark"] .skill-tags span {
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .skill-tags span:hover {
+    background: var(--primary-color);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .skill-buttons .cta-button {
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--text-color);
+}
+
+.skill-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.skill-buttons .cta-button {
+    margin-bottom: 1rem;
+    cursor: default;
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: var(--secondary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.skill-buttons .cta-button.contact {
+    background: var(--accent-color);
+}
+
+.skill-buttons .cta-button.services {
+    background: #2ecc71;
+} 
+
+/* Dark mode styles */
+[data-theme="dark"] .hero-text h1 {
+    background: linear-gradient(45deg, #3498db, #2ecc71);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+} 
+
+.home-link {
+    text-decoration: none;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.home-link h1 {
+    margin: 0;
+}
+
+.home-link:hover {
+    color: #3498db;
+    cursor: pointer;
 } 
