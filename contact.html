@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init('a_4lOHWx6K0aYXTSY');
+        })();
+    </script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot-outline"></div>
+    <div class="cursor-dot"></div>
+    
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress"></div>
+    
+    <!-- Parallax Background -->
+    <div class="parallax-bg"></div>
+    
+    <!-- Floating Particles -->
+    <div class="particles"></div>
+    
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html"><h1 class="site-title">सृजनात्मक पोर्टफोलियो</h1></a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="glass-effect ripple multilang" data-en="Home">होम</a>
+                <a href="about.html" class="glass-effect ripple multilang" data-en="About">बारेमा</a>
+                <a href="designs.html" class="glass-effect ripple multilang" data-en="Designs">डिजाइनहरू</a>
+                <a href="videos.html" class="glass-effect ripple multilang" data-en="Videos">भिडियोहरू</a>
+                <a href="short-films.html" class="glass-effect ripple multilang" data-en="Short Films">छोटो फिल्महरू</a>
+                <a href="contact.html" class="active glass-effect ripple multilang" data-en="Contact">सम्पर्क</a>
+            </div>
+            <div class="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title multilang" data-en="Get In Touch">सम्पर्कमा आउनुहोस्</h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="multilang" data-en="Let's Work Together">सँगै काम गरौं</h3>
+                    <p class="multilang" data-en="I'm available for freelance projects and full-time positions. Feel free to reach out through any of the following channels.">म फ्रिल्यान्स परियोजनाहरू र पूर्णकालीन पदहरूको लागि उपलब्ध छु। निम्न माध्यमहरू मार्फत सम्पर्क गर्न नहिचकिचाउनुहोस्।</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>sunil.paudel13@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>9705886323</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span class="multilang" data-en="Kathmandu, Nepal">काठमाडौं, नेपाल</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-instagram"></i>
+                            <span>instagram.com/in/knownstranger01</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="input-group">
+                            <input type="text" name="name" placeholder="नाम / Name" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="email" name="email" placeholder="इमेल / Email" required>
+                        </div>
+                        <div class="input-group">
+                            <input type="text" name="subject" placeholder="विषय / Subject" required>
+                        </div>
+                        <div class="input-group">
+                            <textarea name="message" placeholder="सन्देश / Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn multilang" data-en="Send Message">सन्देश पठाउनुहोस्</button>
+                        <div class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html" class="ripple multilang" data-en="Home">होम</a>
+                    <a href="about.html" class="ripple multilang" data-en="About">मेरो बारेमा</a>
+                    <a href="designs.html" class="ripple multilang" data-en="Designs">डिजाइन</a>
+                    <a href="videos.html" class="ripple multilang" data-en="Videos">भिडियो</a>
+                    <a href="short-films.html" class="ripple multilang" data-en="Short Films">शर्ट फिल्म</a>
+                    <a href="contact.html" class="ripple multilang" data-en="Contact">सम्पर्क</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon ripple"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon ripple"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-icon ripple"><i class="fab fa-behance"></i></a>
+                </div>
+                <p class="multilang" data-en="© 2023 My Portfolio. All rights reserved.">© २०२३ मेरो पोर्टफोलियो। सर्वाधिकार सुरक्षित।</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
