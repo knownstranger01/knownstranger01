@@ -155,25 +155,45 @@ if (document.querySelector('.particles')) {
 }
 
 // Mobile Menu Toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Prevent background scrolling when menu is open
+            if (navLinks.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
 
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', (e) => {
-        if (menuToggle.classList.contains('active') && 
-            !menuToggle.contains(e.target) && 
-            !navLinks.contains(e.target)) {
-            menuToggle.classList.remove('active');
-            navLinks.classList.remove('active');
-        }
-    });
-}
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('active') && 
+                !menuToggle.contains(e.target) && 
+                !navLinks.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Close menu when clicking on a nav link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+});
 
 // Smooth scroll for navigation links with performance optimization
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -301,12 +321,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const caption = galleryItem.querySelector('.overlay span').textContent;
                 
                 // Set image and caption in modal
-                modal.style.display = 'flex';
                 modalImg.src = imgSrc;
                 
                 if (modalCaption) {
                     modalCaption.textContent = caption;
                 }
+                
+                // Show modal with class for animation
+                modal.classList.add('show');
                 
                 // Prevent scrolling while modal is open
                 document.body.style.overflow = 'hidden';
@@ -316,16 +338,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close modal when clicking X button
         if (closeModal) {
             closeModal.addEventListener('click', function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    document.body.style.overflow = '';
+                }, 300); // Match the animation duration
             });
         }
         
         // Close modal when clicking outside the image
         window.addEventListener('click', function(event) {
             if (event.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
+                modal.classList.remove('show');
+                setTimeout(() => {
+                    document.body.style.overflow = '';
+                }, 300); // Match the animation duration
             }
         });
     }
